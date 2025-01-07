@@ -1,0 +1,16 @@
+{
+  "name": "nask-epp-client",
+  "version": "0.0.1",
+  "description": "NASK EPP https client",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "xml2js": "^0.6.2"
+  }
+}
