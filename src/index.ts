@@ -1,5 +1,5 @@
 // dependencies
-import dotenv from "dotenv";
+import 'dotenv/config';
 ////
 // config
 import { EppCommandSvcConfig, EppCommandExtSvcConfig, EppCommandLoginConfig, EppCommandLoginOptionsConfig } from "./config";
@@ -19,7 +19,7 @@ import { generateClTRID } from "./utils";
 import { sendEppRequest } from "./services/request";
 ////\
 
-dotenv.config()
+//dotenv.config()
 
 const loginCommand: LoginCommand = {
   type: CommandTypeEnum.LOGIN,
