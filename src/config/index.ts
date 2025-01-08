@@ -1,13 +1,10 @@
-import dotenv from 'dotenv'
 
 import { EppConfigKeysEnum, EppCommandSvcConfigKeysEnum, EppCommandExtSvcConfigKeysEnum, EppCommandLoginKeysEnum, EppCommandLoginOptionsKeysEnum } from '../types/enums';
 
-dotenv.config()
-
 export const EppConfig = {
-    [EppConfigKeysEnum.XMLNS]: "http://www.dns.pl/nask-epp-schema/epp-2.1",
-    [EppConfigKeysEnum.XMLNS_XSI]: "http://www.w3.org/2001/XMLSchema-instance",
-    [EppConfigKeysEnum.XSI_SCHEMA_LOCATION]: "http://www.dns.pl/nask-epp-schema/epp-2.1 epp-2.1.xsd",
+    [EppConfigKeysEnum.XMLNS]: process.env.XMLNS || "http://www.dns.pl/nask-epp-schema/epp-2.1",
+    [EppConfigKeysEnum.XMLNS_XSI]: process.env.XMLNS_XSI || "http://www.w3.org/2001/XMLSchema-instance",
+    [EppConfigKeysEnum.XSI_SCHEMA_LOCATION]: process.env.XSI_SCHEMA_LOCATION || "http://www.dns.pl/nask-epp-schema/epp-2.1 epp-2.1.xsd",
   } as const;
 
 export const EppCommandSvcConfig = {

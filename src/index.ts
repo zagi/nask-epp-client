@@ -1,37 +1,21 @@
-import { Builder } from "xml2js";
-import { EppConfig } from "./config";
-import { Command } from "./types/commands/requests/command";
+// config
+import { EppCommandSvcConfig, EppCommandExtSvcConfig, EppCommandLoginConfig, EppCommandLoginOptionsConfig } from "./config";
+
+////
+// enums
 import {
   CommandTypeEnum,
   EppCommandExtSvcConfigKeysEnum,
   EppCommandSvcConfigKeysEnum
 } from "./types/enums";
-import { LoginCommand } from "./types/commands/requests/login";
+// types
+import type { LoginCommand } from "./types/commands/requests/login";
+////
+// other
+import { buildEppCommand } from "./builders";
 import { generateClTRID } from "./utils";
-import { EppCommandSvcConfig, EppCommandExtSvcConfig, EppCommandLoginConfig, EppCommandLoginOptionsConfig } from "./config";
-
-const buildEppCommand = <T extends CommandTypeEnum, D>(
-  command: Command<T, D>
-): string => {
-  const builder = new Builder();
-
-  const eppObject: Record<string, any> = {
-    epp: {
-      $: EppConfig,
-      ...(command.type === CommandTypeEnum.HELLO
-        ? { hello: {} }
-        : {
-            command: {
-              [command.type]: {
-                ...command.data,
-              },
-            },
-          }),
-    },
-  };
-
-  return builder.buildObject(eppObject);
-};
+import { sendEppRequest } from "./services/request";
+////
 
 const loginCommand: LoginCommand = {
   type: CommandTypeEnum.LOGIN,
@@ -51,10 +35,13 @@ const loginCommand: LoginCommand = {
         ],
       },
     },
-    clTRID: generateClTRID("login"),
   },
+  clTRID: generateClTRID(CommandTypeEnum.LOGIN),
 };
 
 const loginXml = buildEppCommand(loginCommand);
-
 console.log(loginXml);
+(async () => {
+  console.log("Sending login command...");
+  await sendEppRequest(loginXml);
+})();
