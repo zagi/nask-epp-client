@@ -15,6 +15,5 @@ export interface LoginCommand extends Command<CommandTypeEnum.LOGIN> {
           extURI: EppCommandExtSvcConfigType[];
         };
       };
-      clTRID: string;
     };
   }
