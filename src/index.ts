@@ -6,7 +6,7 @@ import {
   EppCommandExtSvcConfigKeysEnum,
   EppCommandSvcConfigKeysEnum
 } from "./types/enums";
-import { LoginCommand } from ".//types/commands/requests/login";
+import { LoginCommand } from "./types/commands/requests/login";
 import { generateClTRID } from "./utils";
 import { EppCommandSvcConfig, EppCommandExtSvcConfig, EppCommandLoginConfig, EppCommandLoginOptionsConfig } from "./config";
 
