@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ts-node index.ts",
     "format": "prettier --write ./src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +22,11 @@
   },
   "devDependencies": {
     "@types/xml2js": "^0.4.14",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
     "prettier": "3.4.2"
+  },
+  "lint-staged": {
+    "./src/**/*": "prettier --write --ignore-unknown"
   }
 }
