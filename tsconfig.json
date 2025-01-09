@@ -1,11 +1,15 @@
 {
-    "compilerOptions": {
-        "module": "nodenext",
-        "moduleResolution": "nodenext",
-      "outDir": "./dist",
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true
-    },
-    "include": ["src/**/*.ts"],
-    "exclude": ["dist"]
-  }
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist"]
+}

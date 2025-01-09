@@ -1,6 +1,6 @@
 import { Command } from "./";
 import { CommandTypeEnum } from "../../enums";
 
-export interface HelloCommand extends Command<CommandTypeEnum.HELLO> {
+export interface LogoutCommand extends Command<CommandTypeEnum.LOGOUT> {
     data: {};
 }
