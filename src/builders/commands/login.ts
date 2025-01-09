@@ -1,12 +1,9 @@
 // config
-import {
-  EppCommandSvcConfig,
-  EppCommandExtSvcConfig,
-} from "@/config";
+import { EppCommandSvcConfig, EppCommandExtSvcConfig } from "@/config";
 
 import {
-    EppCommandLoginConfig,
-    EppCommandLoginOptionsConfig,
+  EppCommandLoginConfig,
+  EppCommandLoginOptionsConfig,
 } from "@/config/commands/login";
 ////
 // enums

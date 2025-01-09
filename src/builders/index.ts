@@ -5,7 +5,7 @@ import { CommandTypeEnum } from "@/types/enums";
 import { Command } from "@/types/commands/requests/";
 
 export const buildEppCommand = <T extends CommandTypeEnum, D>(
-  command: Command<T, D>
+  command: Command<T, D>,
 ): string => {
   const builder = new Builder();
   const eppObject: Record<string, any> = {
@@ -18,4 +18,3 @@ export const buildEppCommand = <T extends CommandTypeEnum, D>(
   };
   return builder.buildObject(eppObject);
 };
-
