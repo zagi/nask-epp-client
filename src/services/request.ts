@@ -3,10 +3,7 @@ import { parseString } from "xml2js";
 
 export const sendEppRequest = async (xmlCommand: string): Promise<void> => {
   try {
-    const response = await client.post(
-      process.env.EPP_SERVER_PATH || "/registry/epp",
-      xmlCommand,
-    );
+    const response = await client.post(process.env.EPP_SERVER_PATH, xmlCommand);
     console.log("Response Headers:", response.headers);
     console.log("Response Data:", response.data);
     console.log("Cookies:", cookieJar.toJSON());

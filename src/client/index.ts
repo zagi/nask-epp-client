@@ -3,13 +3,9 @@ import axios from "axios";
 import { HttpsCookieAgent } from "http-cookie-agent/http";
 import { CookieJar } from "tough-cookie";
 
-const sslCert = fs.readFileSync(
-  process.env.SSL_CERT_PATH || "/path/to/cert.pem",
-);
-const sslKey = fs.readFileSync(process.env.SSL_KEY_PATH || "/path/to/key.pem");
-const caBundle = fs.readFileSync(
-  process.env.CA_BUNDLE_PATH || "/path/to/root.pem",
-);
+const sslCert = fs.readFileSync(process.env.SSL_CERT_PATH);
+const sslKey = fs.readFileSync(process.env.SSL_KEY_PATH);
+const caBundle = fs.readFileSync(process.env.CA_BUNDLE_PATH);
 
 const cookieJar = new CookieJar();
 
@@ -22,7 +18,7 @@ const httpsAgent = new HttpsCookieAgent({
 });
 
 const client = axios.create({
-  baseURL: process.env.EPP_SERVER_URL || "https://registry.dns.pl",
+  baseURL: process.env.EPP_SERVER_URL,
   httpsAgent,
   withCredentials: true,
   headers: {
