@@ -1,7 +1,0 @@
-export const REQUIRED_ENV_VARS = [
-  "EPP_SERVER_URL",
-  "EPP_SERVER_PATH",
-  "SSL_CERT_PATH",
-  "SSL_KEY_PATH",
-  "CA_BUNDLE_PATH",
-];

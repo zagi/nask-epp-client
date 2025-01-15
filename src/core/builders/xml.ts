@@ -1,15 +1,7 @@
-// dependencies
 import { Builder } from "xml2js";
-////
-// config
-import { EppConfig } from "@/config";
-////
-// enums
+import { Command } from "@/types/commands";
 import { CommandTypeEnum } from "@/types/enums";
-////
-// types
-import type { Command } from "@/types/commands/requests/";
-////
+import { EppConfig } from "@/config/epp";
 
 export const buildEppCommand = <T extends CommandTypeEnum, D>(
   command: Command<T, D>,

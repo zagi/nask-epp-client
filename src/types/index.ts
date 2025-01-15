@@ -1,5 +1,5 @@
 import { EppCommandSvcConfig, EppCommandExtSvcConfig } from "@/config";
-import { EppCommandLoginOptionsConfig } from "@/config/commands/login";
+import { EppCommandLoginOptionsConfig } from "@/config";
 
 export type EppCommandSvcConfigType =
   (typeof EppCommandSvcConfig)[keyof typeof EppCommandSvcConfig];
