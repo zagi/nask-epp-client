@@ -2,6 +2,7 @@ export enum CommandTypeEnum {
   HELLO = "hello",
   LOGIN = "login",
   LOGOUT = "logout",
+  POLL = "poll",
 }
 
 export enum EppConfigKeysEnum {
@@ -30,4 +31,9 @@ export enum EppCommandLoginKeysEnum {
 export enum EppCommandLoginOptionsKeysEnum {
   VERSION = "version",
   LANG = "lang",
+}
+
+export enum EppCommandPollOperationEnum {
+  REQ = "req",
+  ACK = "ack",
 }
