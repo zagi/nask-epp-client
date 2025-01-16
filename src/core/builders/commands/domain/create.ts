@@ -1,0 +1,35 @@
+import {
+  CommandTypeEnum,
+  ConfigKeysEnum,
+  DomainFieldsEnum,
+} from "@/types/enums";
+import type { DomainCreateCommand } from "@/types/commands/requests/domain";
+import { buildEppCommand } from "../../xml";
+import { generateClTRID } from "@/utils/transactions";
+import { DomainConfig } from "@/config/epp/commands";
+
+export const buildDomainCheckCommand = (domainName: string): string => {
+  const domainCheckCommand: DomainCreateCommand = {
+    type: CommandTypeEnum.DOMAIN_CREATE,
+    data: {
+      [CommandTypeEnum.DOMAIN_CREATE]: {
+        $: {
+          [ConfigKeysEnum.XMLNS_DOMAIN]:
+            DomainConfig[ConfigKeysEnum.XMLNS_DOMAIN],
+          [ConfigKeysEnum.XSI_SCHEMA_LOCATION]:
+            DomainConfig[ConfigKeysEnum.XSI_SCHEMA_LOCATION],
+        },
+        [DomainFieldsEnum.DOMAIN_NAME]: domainName,
+        [DomainFieldsEnum.DOMAIN_PERIOD]: {
+          $: {
+            unit: "y",
+            _: "1",
+          },
+        },
+      },
+    },
+    clTRID: generateClTRID(CommandTypeEnum.DOMAIN_CHECK),
+  };
+
+  return buildEppCommand(domainCheckCommand);
+};

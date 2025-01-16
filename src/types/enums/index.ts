@@ -4,6 +4,7 @@ export enum CommandTypeEnum {
   LOGOUT = "logout",
   POLL = "poll",
   DOMAIN_CHECK = "domain:check",
+  DOMAIN_CREATE = "domain:create",
 }
 
 export enum ConfigKeysEnum {
@@ -42,4 +43,9 @@ export enum PollOperationEnum {
 
 export enum DomainFieldsEnum {
   DOMAIN_NAME = "domain:name",
+  DOMAIN_PERIOD = "domain:period",
+  DOMAIN_NS = "domain:ns",
+  DOMAIN_REGISTRANT = "domain:registrant",
+  DOMAIN_AUTH_INFO = "domain:authInfo",
+  DOMAIN_PW = "domain:pw",
 }

@@ -1,4 +1,4 @@
 import { DomainCommand } from "./";
 import { CommandTypeEnum } from "@/types/enums";
 
-export type DomainCheckCommand = DomainCommand<CommandTypeEnum.DOMAIN_CHECK>;
+export type DomainCreateCommand = DomainCommand<CommandTypeEnum.DOMAIN_CREATE>;
