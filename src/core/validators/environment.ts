@@ -1,12 +1,6 @@
 import { REQUIRED_ENV_VARS } from "@/config/constants";
 import { logger } from "@/utils/logger";
-
-export class EnvironmentError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = "EnvironmentError";
-  }
-}
+import { EnvironmentError } from "./errors";
 
 export const validateEnvironment = (): void => {
   const missingVars = REQUIRED_ENV_VARS.filter(
