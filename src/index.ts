@@ -11,7 +11,7 @@ const main = async () => {
 
     const loginXml = buildLoginCommand();
     logger.debug("Login command built successfully", { loginXml });
-
+    console.log(loginXml);
     const response = await sendEppCommand(loginXml);
     logger.info("EPP command executed successfully", { response });
 

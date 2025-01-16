@@ -1,9 +1,9 @@
 import { Command } from "./";
 
-import {
-  EppCommandSvcConfigType,
-  EppCommandExtSvcConfigType,
-  EppCommandLoginOptionsConfigType,
+import type {
+  SvcConfigType,
+  ExtSvcConfigType,
+  LoginOptionsConfigType,
 } from "@/types";
 
 import { CommandTypeEnum } from "@/types/enums";
@@ -12,11 +12,11 @@ export interface LoginCommand extends Command<CommandTypeEnum.LOGIN> {
   data: {
     clID: string;
     pw: string;
-    options: EppCommandLoginOptionsConfigType;
+    options: LoginOptionsConfigType;
     svcs: {
-      objURI: EppCommandSvcConfigType[];
+      objURI: SvcConfigType[];
       svcExtension?: {
-        extURI: EppCommandExtSvcConfigType[];
+        extURI: ExtSvcConfigType[];
       };
     };
   };
