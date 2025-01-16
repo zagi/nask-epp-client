@@ -19,7 +19,7 @@ interface DomainPeriod {
   _: string;
 }
 
-interface DomainAuthInfo {
+export interface DomainAuthInfo {
   [DomainFieldsEnum.DOMAIN_PW]: string;
 }
 

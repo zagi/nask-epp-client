@@ -3,12 +3,20 @@ import {
   ConfigKeysEnum,
   DomainFieldsEnum,
 } from "@/types/enums";
-import type { DomainCreateCommand } from "@/types/commands/requests/domain";
+import type {
+  DomainCreateCommand,
+  DomainAuthInfo,
+} from "@/types/commands/requests/domain";
 import { buildEppCommand } from "../../xml";
 import { generateClTRID } from "@/utils/transactions";
 import { DomainConfig } from "@/config/epp/commands";
 
-export const buildDomainCheckCommand = (domainName: string): string => {
+export const buildDomainCreateCommand = (
+  domainName: string,
+  domainNs: string[],
+  registrant: string,
+  domainAuthInfo: DomainAuthInfo,
+): string => {
   const domainCheckCommand: DomainCreateCommand = {
     type: CommandTypeEnum.DOMAIN_CREATE,
     data: {
@@ -23,9 +31,12 @@ export const buildDomainCheckCommand = (domainName: string): string => {
         [DomainFieldsEnum.DOMAIN_PERIOD]: {
           $: {
             unit: "y",
-            _: "1",
           },
+          _: "1",
         },
+        [DomainFieldsEnum.DOMAIN_NS]: domainNs,
+        [DomainFieldsEnum.DOMAIN_REGISTRANT]: registrant,
+        [DomainFieldsEnum.DOMAIN_AUTH_INFO]: domainAuthInfo,
       },
     },
     clTRID: generateClTRID(CommandTypeEnum.DOMAIN_CHECK),
