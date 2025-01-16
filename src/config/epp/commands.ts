@@ -20,7 +20,7 @@ export const LoginOptionsConfig = {
   [LoginOptionsKeysEnum.LANG]: process.env.OPTIONS_LANG ?? EPP_DEFAULTS.LANG,
 } as const;
 
-export const DomainCheckConfig = {
+export const DomainConfig = {
   [ConfigKeysEnum.XMLNS_DOMAIN]: process.env.XMLNS_DOMAIN,
   [ConfigKeysEnum.XSI_SCHEMA_LOCATION]: process.env.XSI_SCHEMA_LOCATION_DOMAIN,
 };
