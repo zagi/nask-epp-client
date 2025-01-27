@@ -1,23 +1,22 @@
 // config
-import { EppCommandSvcConfig, EppCommandExtSvcConfig } from "@/config";
+import { SvcConfig, ExtSvcConfig } from "@/config";
 ////
 
-import {
-  EppCommandExtSvcConfigKeysEnum,
-  EppCommandSvcConfigKeysEnum,
-} from "@/types/enums";
+// enums
+import { CommandResourceEnum, ExtSvcConfigKeysEnum } from "@/types/enums";
+////
 
 export const buildSvcsObject = () => {
   return {
     objURI: [
-      EppCommandSvcConfig[EppCommandSvcConfigKeysEnum.CONTACT],
-      EppCommandSvcConfig[EppCommandSvcConfigKeysEnum.DOMAIN],
-      EppCommandSvcConfig[EppCommandSvcConfigKeysEnum.HOST],
+      SvcConfig[CommandResourceEnum.CONTACT],
+      SvcConfig[CommandResourceEnum.DOMAIN],
+      SvcConfig[CommandResourceEnum.HOST],
     ],
     svcExtension: {
       extURI: [
-        EppCommandExtSvcConfig[EppCommandExtSvcConfigKeysEnum.EXT_CON],
-        EppCommandExtSvcConfig[EppCommandExtSvcConfigKeysEnum.EXT_DOM],
+        ExtSvcConfig[ExtSvcConfigKeysEnum.EXT_CON],
+        ExtSvcConfig[ExtSvcConfigKeysEnum.EXT_DOM],
       ],
     },
   };
