@@ -2,6 +2,7 @@ import {
   CommandTypeEnum,
   ConfigKeysEnum,
   DomainFieldsEnum,
+  DomainUnitEnum,
 } from "@/types/enums";
 import type {
   DomainCreateCommand,
@@ -10,6 +11,7 @@ import type {
 import { buildEppCommand } from "../../xml";
 import { generateClTRID } from "@/utils/transactions";
 import { DomainConfig } from "@/config/epp/commands";
+import { EPP_DEFAULTS } from "@/config/constants/epp";
 
 export const buildDomainCreateCommand = (
   domainName: string,
@@ -29,9 +31,9 @@ export const buildDomainCreateCommand = (
       [DomainFieldsEnum.DOMAIN_NAME]: domainName,
       [DomainFieldsEnum.DOMAIN_PERIOD]: {
         $: {
-          unit: "y",
+          unit: DomainUnitEnum.YEAR,
         },
-        _: "1",
+        _: EPP_DEFAULTS.PERIOD,
       },
       [DomainFieldsEnum.DOMAIN_NS]: domainNs,
       [DomainFieldsEnum.DOMAIN_REGISTRANT]: registrant,
