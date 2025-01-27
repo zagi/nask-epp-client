@@ -3,5 +3,5 @@ export const EPP_DEFAULTS = {
   LANG: "en",
   TIMEOUT: 5000,
   MAX_RETRIES: 3,
-  PERIOD: 1,
+  PERIOD: "1",
 } as const;
