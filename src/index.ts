@@ -4,6 +4,7 @@ import { logger } from "@/utils/logger";
 import { buildLoginCommand } from "@/core/builders/commands/login";
 import { buildDomainCreateCommand } from "@/core/builders/commands/domain/create";
 import { sendEppCommand } from "@/services/epp/commands";
+import { DomainContactTypeEnum } from "./types/enums";
 
 const main = async () => {
   try {
@@ -20,6 +21,14 @@ const main = async () => {
       {
         "domain:pw": "password",
       },
+      [
+        {
+          $: {
+            type: DomainContactTypeEnum.ADMIN,
+          },
+          _: "contactid",
+        },
+      ],
     );
     logger.debug("Create command built successfully", { domainCreateXml });
     console.log(domainCreateXml);

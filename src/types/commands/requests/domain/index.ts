@@ -5,6 +5,7 @@ import {
   DomainFieldsEnum,
   DomainUnitEnum,
   DomainContactTypeEnum,
+  DomainNameInfoHostsEnum,
 } from "@/types/enums";
 
 type DomainCommandBase = {
@@ -32,6 +33,7 @@ export interface DomainContact {
       | DomainContactTypeEnum.BILLING
       | DomainContactTypeEnum.TECH;
   };
+  _: string;
 }
 
 type DomainCheckData = DomainCommandBase & {
@@ -48,14 +50,35 @@ type DomainCreateData = DomainCommandBase & {
   [DomainFieldsEnum.DOMAIN_CONTACT]?: DomainContact[];
 };
 
+export interface DomainNameInfo {
+  _: string;
+  $: {
+    hosts?:
+      | DomainNameInfoHostsEnum.ALL
+      | DomainNameInfoHostsEnum.DEL
+      | DomainNameInfoHostsEnum.SUB
+      | DomainNameInfoHostsEnum.NONE;
+  };
+}
+
+type DomainInfoData = DomainCommandBase & {
+  [DomainFieldsEnum.DOMAIN_NAME]: DomainNameInfo;
+  [DomainFieldsEnum.DOMAIN_AUTH_INFO]?: DomainAuthInfo;
+};
+
 type DomainCommandData = {
   [CommandTypeEnum.DOMAIN_CHECK]: DomainCheckData;
   [CommandTypeEnum.DOMAIN_CREATE]: DomainCreateData;
+  [CommandTypeEnum.DOMAIN_INFO]: DomainInfoData;
 };
 
 export type DomainCommand<
-  T extends CommandTypeEnum.DOMAIN_CHECK | CommandTypeEnum.DOMAIN_CREATE,
+  T extends
+    | CommandTypeEnum.DOMAIN_CHECK
+    | CommandTypeEnum.DOMAIN_CREATE
+    | CommandTypeEnum.DOMAIN_INFO,
 > = EPPCommand<T, DomainCommandData[T]>;
 
 export * from "./check";
 export * from "./create";
+export * from "./info";

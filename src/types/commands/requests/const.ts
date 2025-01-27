@@ -13,6 +13,10 @@ export const RESOURCE_COMMAND_MAP = {
     resource: CommandResourceEnum.DOMAIN,
     command: CommandEnum.CREATE,
   },
+  [CommandTypeEnum.DOMAIN_INFO]: {
+    resource: CommandResourceEnum.DOMAIN,
+    command: CommandEnum.INFO,
+  },
   [CommandTypeEnum.HELLO]: { command: CommandEnum.HELLO, resource: null },
   [CommandTypeEnum.LOGIN]: { command: CommandEnum.LOGIN, resource: null },
   [CommandTypeEnum.LOGOUT]: { command: CommandEnum.LOGOUT, resource: null },

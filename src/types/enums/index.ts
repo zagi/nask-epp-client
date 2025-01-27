@@ -5,6 +5,7 @@ export enum CommandTypeEnum {
   POLL = "poll",
   DOMAIN_CHECK = "domain:check",
   DOMAIN_CREATE = "domain:create",
+  DOMAIN_INFO = "domain:info",
 }
 
 export enum ConfigKeysEnum {
@@ -75,4 +76,11 @@ export enum DomainContactTypeEnum {
   ADMIN = "admin",
   BILLING = "billing",
   TECH = "tech",
+}
+
+export enum DomainNameInfoHostsEnum {
+  ALL = "all",
+  DEL = "del",
+  SUB = "sub",
+  NONE = "none",
 }
