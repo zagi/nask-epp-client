@@ -20,24 +20,22 @@ export const buildDomainCreateCommand = (
   const domainCheckCommand: DomainCreateCommand = {
     type: CommandTypeEnum.DOMAIN_CREATE,
     data: {
-      [CommandTypeEnum.DOMAIN_CREATE]: {
-        $: {
-          [ConfigKeysEnum.XMLNS_DOMAIN]:
-            DomainConfig[ConfigKeysEnum.XMLNS_DOMAIN],
-          [ConfigKeysEnum.XSI_SCHEMA_LOCATION]:
-            DomainConfig[ConfigKeysEnum.XSI_SCHEMA_LOCATION],
-        },
-        [DomainFieldsEnum.DOMAIN_NAME]: domainName,
-        [DomainFieldsEnum.DOMAIN_PERIOD]: {
-          $: {
-            unit: "y",
-          },
-          _: "1",
-        },
-        [DomainFieldsEnum.DOMAIN_NS]: domainNs,
-        [DomainFieldsEnum.DOMAIN_REGISTRANT]: registrant,
-        [DomainFieldsEnum.DOMAIN_AUTH_INFO]: domainAuthInfo,
+      $: {
+        [ConfigKeysEnum.XMLNS_DOMAIN]:
+          DomainConfig[ConfigKeysEnum.XMLNS_DOMAIN],
+        [ConfigKeysEnum.XSI_SCHEMA_LOCATION]:
+          DomainConfig[ConfigKeysEnum.XSI_SCHEMA_LOCATION],
       },
+      [DomainFieldsEnum.DOMAIN_NAME]: domainName,
+      [DomainFieldsEnum.DOMAIN_PERIOD]: {
+        $: {
+          unit: "y",
+        },
+        _: "1",
+      },
+      [DomainFieldsEnum.DOMAIN_NS]: domainNs,
+      [DomainFieldsEnum.DOMAIN_REGISTRANT]: registrant,
+      [DomainFieldsEnum.DOMAIN_AUTH_INFO]: domainAuthInfo,
     },
     clTRID: generateClTRID(CommandTypeEnum.DOMAIN_CHECK),
   };

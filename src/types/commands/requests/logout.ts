@@ -1,6 +1,4 @@
-import { Command } from "./";
+import { EPPCommand } from "./";
 import { CommandTypeEnum } from "@/types/enums";
 
-export interface LogoutCommand extends Command<CommandTypeEnum.LOGOUT> {
-  data: {};
-}
+export type LogoutCommand = EPPCommand<CommandTypeEnum.LOGOUT, {}>;

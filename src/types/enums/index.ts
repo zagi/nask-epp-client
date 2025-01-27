@@ -14,7 +14,7 @@ export enum ConfigKeysEnum {
   XMLNS_DOMAIN = "xmlns:domain",
 }
 
-export enum SvcConfigKeysEnum {
+export enum CommandResourceEnum {
   CONTACT = "contact",
   HOST = "host",
   DOMAIN = "domain",
@@ -48,4 +48,31 @@ export enum DomainFieldsEnum {
   DOMAIN_REGISTRANT = "domain:registrant",
   DOMAIN_AUTH_INFO = "domain:authInfo",
   DOMAIN_PW = "domain:pw",
+  DOMAIN_CONTACT = "domain:contact",
+}
+
+export enum CommandEnum {
+  CHECK = "check",
+  CREATE = "create",
+  DELETE = "delete",
+  UPDATE = "update",
+  INFO = "info",
+  RENEW = "renew",
+  TRANSFER = "transfer",
+
+  LOGIN = "login",
+  LOGOUT = "logout",
+  POLL = "poll",
+  HELLO = "hello",
+}
+
+export enum DomainUnitEnum {
+  YEAR = "y",
+  MONTH = "m",
+}
+
+export enum DomainContactTypeEnum {
+  ADMIN = "admin",
+  BILLING = "billing",
+  TECH = "tech",
 }

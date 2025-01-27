@@ -1,20 +1,22 @@
-import { Command } from "../";
+import { EPPCommand } from "../";
 import {
   CommandTypeEnum,
   ConfigKeysEnum,
   DomainFieldsEnum,
+  DomainUnitEnum,
+  DomainContactTypeEnum,
 } from "@/types/enums";
 
-interface DomainCommandBase {
+type DomainCommandBase = {
   $: {
     [ConfigKeysEnum.XMLNS_DOMAIN]: string;
     [ConfigKeysEnum.XSI_SCHEMA_LOCATION]: string;
   };
-}
+};
 
 interface DomainPeriod {
   $: {
-    unit: "y" | "m";
+    unit: DomainUnitEnum.YEAR | DomainUnitEnum.MONTH;
   };
   _: string;
 }
@@ -23,17 +25,28 @@ export interface DomainAuthInfo {
   [DomainFieldsEnum.DOMAIN_PW]: string;
 }
 
-interface DomainCheckData extends DomainCommandBase {
-  [DomainFieldsEnum.DOMAIN_NAME]: string[];
+export interface DomainContact {
+  $: {
+    type:
+      | DomainContactTypeEnum.ADMIN
+      | DomainContactTypeEnum.BILLING
+      | DomainContactTypeEnum.TECH;
+  };
 }
 
-interface DomainCreateData extends DomainCommandBase {
+type DomainCheckData = DomainCommandBase & {
+  [DomainFieldsEnum.DOMAIN_NAME]: string[];
+};
+
+type DomainCreateData = DomainCommandBase & {
   [DomainFieldsEnum.DOMAIN_NAME]: string[] | string;
   [DomainFieldsEnum.DOMAIN_PERIOD]: DomainPeriod;
   [DomainFieldsEnum.DOMAIN_NS]: string[];
   [DomainFieldsEnum.DOMAIN_REGISTRANT]: string;
   [DomainFieldsEnum.DOMAIN_AUTH_INFO]: DomainAuthInfo;
-}
+
+  [DomainFieldsEnum.DOMAIN_CONTACT]?: DomainContact[];
+};
 
 type DomainCommandData = {
   [CommandTypeEnum.DOMAIN_CHECK]: DomainCheckData;
@@ -42,12 +55,7 @@ type DomainCommandData = {
 
 export type DomainCommand<
   T extends CommandTypeEnum.DOMAIN_CHECK | CommandTypeEnum.DOMAIN_CREATE,
-> = Command<
-  T,
-  {
-    [K in T]: DomainCommandData[K];
-  }
->;
+> = EPPCommand<T, DomainCommandData[T]>;
 
 export * from "./check";
 export * from "./create";

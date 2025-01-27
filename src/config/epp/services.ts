@@ -1,7 +1,7 @@
 // enums
 import {
   ConfigKeysEnum,
-  SvcConfigKeysEnum,
+  CommandResourceEnum,
   ExtSvcConfigKeysEnum,
 } from "@/types/enums";
 ////
@@ -13,10 +13,10 @@ export const EppConfig = {
 } as const;
 
 export const SvcConfig = {
-  [SvcConfigKeysEnum.CONTACT]: process.env.SVC_CONTACT,
-  [SvcConfigKeysEnum.HOST]: process.env.SVC_HOST,
-  [SvcConfigKeysEnum.DOMAIN]: process.env.SVC_DOMAIN,
-  [SvcConfigKeysEnum.FUTURE]: process.env.SVC_FUTURE,
+  [CommandResourceEnum.CONTACT]: process.env.SVC_CONTACT,
+  [CommandResourceEnum.HOST]: process.env.SVC_HOST,
+  [CommandResourceEnum.DOMAIN]: process.env.SVC_DOMAIN,
+  [CommandResourceEnum.FUTURE]: process.env.SVC_FUTURE,
 } as const;
 
 export const ExtSvcConfig = {
